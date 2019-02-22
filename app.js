@@ -1,5 +1,5 @@
 let app = angular.module("hangman", []);
-app.controller("GameController", ['$scope', function($scope){
+app.controller("GameController", ['$scope', '$timeout', function($scope, $timeout){
   let words = ["rat", "cat", "bat", "mat"];
 
   $scope.incorrectLetters = [];
@@ -54,9 +54,21 @@ $scope.letterChosen = () => {
     if(correct){
       $scope.correctLetters.push($scope.input.letter.toLowerCase());
     } else {
+      $scope.guesses --;
       $scope.incorrectLetters.push($scope.input.letter.toLowerCase());
     }
     $scope.input.letter = "";
+    if($scope.guesses == 0) {
+      $timeout(function(){
+        newGame();
+      }, 500);
+    }
+    if($scope.displayWord.indexOf("*") == -1) {
+      $timeout(function(){
+        newGame();
+      }, 500);
+    }
+
   }
 
 
