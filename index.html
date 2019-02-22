@@ -10,7 +10,25 @@
   <script src="app.js"></script>
 <body ng-app="hangman" ng-controller="GameController">
   <div>
+    <div>
+      Guesses Left :: {{guesses}}
+    </div>
+    <div>
+        Incorrect Guesses :: <span ng-repeat="letter in incorrectLetters">
+          {{letter}}
+        </span>
+      </div>
+      <div>
+        Correct Guesses :: <span ng-repeat="letter in correctLetters">
+            {{letter}}
+          </span>
+        </div>
     <div>You have to guess: {{displayWord}}</div>
+  </div>
+
+  <div>
+    <input type="text" name="guess" ng-model="input.letter">
+    <button ng-click="letterChosen()">Submit</button>
   </div>
   
 </body>
