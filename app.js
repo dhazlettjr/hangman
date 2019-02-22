@@ -24,9 +24,13 @@ app.controller("GameController", ['$scope', function($scope){
     selectedWord = selectRandomWord();
     let tempDisplayWord = '';
     for (let i = 0; i < selectedWord.length; i++) {
-      tempDisplayWord+='*';
+      tempDisplayWord +='*';
     }
     $scope.displayWord = tempDisplayWord;
+}
+
+$scope.letterChosen = () => {
+
 }
 
 newGame();
